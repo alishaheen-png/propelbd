@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propel BD — AI-Powered Business Development</title>
+
+<!-- SEO -->
+<meta name="description" content="Propel BD implements AI, builds sales engines, and rewires how your business operates — so every department runs faster, sharper, and more profitably. GCC + UK markets.">
+<meta name="keywords" content="AI business development, sales automation, GCC markets, UK markets, AI implementation, lead generation, business transformation, PropelBD">
+<meta name="author" content="Ali Shaheen — Propel BD">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alishaheen-png.github.io/propelbd/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Propel BD — AI-Powered Business Development">
+<meta property="og:description" content="We implement AI, build sales engines, and rewire how your business operates — so every department runs faster, sharper, and more profitably.">
+<meta property="og:url" content="https://alishaheen-png.github.io/propelbd/">
+<meta property="og:site_name" content="Propel BD">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Propel BD — AI-Powered Business Development">
+<meta name="twitter:description" content="We implement AI, build sales engines, and rewire how your business operates across GCC and UK markets.">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Propel BD",
+  "description": "AI-powered business development consultancy operating across GCC and UK markets",
+  "url": "https://alishaheen-png.github.io/propelbd/",
+  "founder": { "@type": "Person", "name": "Ali Shaheen" },
+  "areaServed": ["GCC", "United Kingdom"],
+  "serviceType": ["AI Implementation", "Sales Pipeline Development", "Business Transformation"],
+  "contactPoint": { "@type": "ContactPoint", "email": "a.shaheen7853@gmail.com", "contactType": "sales" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #060608;
+    --off-black: #0c0c10;
+    --card: #111116;
+    --card-hover: #16161d;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.1);
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: rgba(201,168,76,0.12);
+    --gold-glow: rgba(201,168,76,0.25);
+    --white: #f5f0e8;
+    --white-dim: rgba(245,240,232,0.5);
+    --white-faint: rgba(245,240,232,0.06);
+    --gradient-gold: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── CURSOR ── */
+  .cursor {
+    position: fixed; width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s cubic-bezier(.23,1,.32,1);
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 40px; height: 40px;
+    border: 1.5px solid rgba(201,168,76,0.5); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s cubic-bezier(.23,1,.32,1);
+    opacity: 0.5;
+  }
+
+  /* ── CANVAS ── */
+  #particle-canvas {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; opacity: 0.45;
+  }
+
+  /* ── DOT GRID ── */
+  .dot-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(245,240,232,0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* ── NOISE ── */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.3;
+  }
+
+  /* ── FLOATING GEOMETRIC SHAPES ── */
+  .geo-shapes { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .geo { position: absolute; border: 1px solid rgba(201,168,76,0.15); will-change: transform; }
+
+  .geo-diamond      { width: 120px; height: 120px; transform: rotate(45deg); top: 15%; right: 8%; animation: geoFloat1 18s ease-in-out infinite; }
+  .geo-diamond-sm   { width: 56px;  height: 56px;  transform: rotate(45deg); top: 60%; right: 18%; animation: geoFloat2 24s ease-in-out infinite; border-color: rgba(201,168,76,0.08); }
+  .geo-diamond-lg   { width: 200px; height: 200px; transform: rotate(45deg); top: 30%; left: -60px; animation: geoFloat3 32s ease-in-out infinite; border-color: rgba(201,168,76,0.05); }
+  .geo-circle       { width: 160px; height: 160px; border-radius: 50%; top: 20%; left: 50%; animation: geoFloat1 28s ease-in-out infinite; border-color: rgba(201,168,76,0.07); }
+  .geo-line-h       { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent); border: none; top: 45%; right: 5%; animation: geoFloat5 14s ease-in-out infinite; }
+  .geo-line-v       { width: 1px; height: 140px; background: linear-gradient(180deg, transparent, rgba(201,168,76,0.15), transparent); border: none; top: 10%; right: 30%; animation: geoFloat2 22s ease-in-out infinite; }
+  .geo-cross        { width: 40px; height: 40px; border: none; top: 80%; right: 10%; animation: geoFloat3 16s ease-in-out infinite; }
+  .geo-cross::before, .geo-cross::after { content: ''; position: absolute; background: rgba(201,168,76,0.22); }
+  .geo-cross::before { width: 1px; height: 100%; left: 50%; transform: translateX(-50%); }
+  .geo-cross::after  { width: 100%; height: 1px; top: 50%; transform: translateY(-50%); }
+  .geo-hex {
+    width: 70px; height: 70px; border: none;
+    background: rgba(201,168,76,0.04);
+    clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    top: 72%; left: 5%; animation: geoFloat4 20s ease-in-out infinite;
+  }
+
+  @keyframes geoFloat1 {
+    0%,100% { transform: rotate(45deg) translateY(0) translateX(0); opacity:.6; }
+    25%     { transform: rotate(47deg) translateY(-18px) translateX(8px); opacity:.9; }
+    50%     { transform: rotate(45deg) translateY(-32px) translateX(-6px); opacity:.5; }
+    75%     { transform: rotate(43deg) translateY(-14px) translateX(12px); opacity:.8; }
+  }
+  @keyframes geoFloat2 {
+    0%,100% { transform: rotate(45deg) translateY(0); opacity:.4; }
+    33%     { transform: rotate(50deg) translateY(-24px); opacity:.7; }
+    66%     { transform: rotate(42deg) translateY(-10px); opacity:.3; }
+  }
+  @keyframes geoFloat3 {
+    0%,100% { transform: rotate(45deg) translateX(0) translateY(0); opacity:.3; }
+    50%     { transform: rotate(50deg) translateX(20px) translateY(-28px); opacity:.5; }
+  }
+  @keyframes geoFloat4 {
+    0%,100% { transform: translateY(0) rotate(0deg); opacity:.6; }
+    50%     { transform: translateY(-20px) rotate(30deg); opacity:.9; }
+  }
+  @keyframes geoFloat5 {
+    0%,100% { transform: translateX(0) scaleX(1); opacity:.5; }
+    50%     { transform: translateX(-20px) scaleX(1.2); opacity:.9; }
+  }
+
+  /* ── ANIMATED MESH ── */
+  .hero-mesh {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    animation: meshShift 12s ease-in-out infinite alternate;
+  }
+  @keyframes meshShift {
+    0%   { opacity: 1; filter: blur(0px); }
+    50%  { opacity: 0.6; filter: blur(2px); }
+    100% { opacity: 0.9; filter: blur(0px); }
+  }
+
+  /* ── PARALLAX GLOWS ── */
+  .hero-glow {
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none; z-index: 1; will-change: transform;
+  }
+  .hero-glow-2 {
+    position: absolute; bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none; z-index: 1; will-change: transform;
+  }
+
+  /* ── SCROLL PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 200;
+    height: 2px; width: 0%;
+    background: var(--gradient-gold);
+    box-shadow: 0 0 8px rgba(201,168,76,0.5);
+    transition: width 0.08s linear;
+    pointer-events: none;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 56px;
+    background: rgba(6,6,8,0.8);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s ease, background 0.3s ease;
+  }
+  nav.scrolled { padding: 16px 56px; background: rgba(6,6,8,0.95); border-bottom-color: var(--border-strong); }
+
+  .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; color: var(--white); }
+  .logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white-dim); text-decoration: none;
+    transition: color 0.25s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s cubic-bezier(.23,1,.32,1);
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--black); background: var(--gold);
+    border: none; padding: 13px 28px; cursor: none;
+    transition: all 0.25s cubic-bezier(.23,1,.32,1);
+    text-decoration: none; display: inline-block; font-weight: 500;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(201,168,76,0.2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; padding: 160px 56px 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-line { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border); z-index: 1; }
+  .hero-grid-line:nth-child(1) { left: 20%; }
+  .hero-grid-line:nth-child(2) { left: 40%; }
+  .hero-grid-line:nth-child(3) { left: 60%; }
+  .hero-grid-line:nth-child(4) { left: 80%; }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 8.5vw, 112px); font-weight: 900;
+    line-height: 1.02; letter-spacing: -0.03em;
+    max-width: 920px; padding-bottom: 8px;
+    opacity: 0; animation: fadeUp 0.9s 0.4s ease forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 17px; font-weight: 400; color: var(--white-dim);
+    max-width: 480px; line-height: 1.7; margin-top: 36px;
+    opacity: 0; animation: fadeUp 0.9s 0.6s ease forwards;
+  }
+
+  .hero-actions {
+    display: flex; align-items: center; gap: 28px; margin-top: 52px;
+    opacity: 0; animation: fadeUp 0.9s 0.8s ease forwards;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: none; padding: 18px 40px; text-decoration: none;
+    display: inline-block; cursor: none; font-weight: 500;
+    transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary:hover { background: var(--gold-light); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
+  .btn-primary::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn-primary:hover::before { left: 100%; }
+
+  .btn-ghost {
+    color: var(--white-dim); font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; display: flex; align-items: center;
+    gap: 10px; cursor: none; transition: color 0.25s;
+  }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost::after { content: '\2192'; transition: transform 0.25s; }
+  .btn-ghost:hover::after { transform: translateX(6px); }
+
+  /* ── HERO STATS ── */
+  .hero-stats {
+    display: flex; gap: 56px; margin-top: 88px; padding-top: 44px;
+    border-top: 1px solid var(--border);
+    opacity: 0; animation: fadeUp 0.9s 1s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 40px;
+    font-weight: 700; line-height: 1;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--white-dim); margin-top: 8px;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 18px 0; overflow: hidden; background: var(--off-black);
+    position: relative; z-index: 2;
+  }
+  .marquee-track {
+    display: flex; gap: 48px;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap; width: max-content;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-item {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--white-dim); display: flex; align-items: center; gap: 18px;
+    transition: color 0.2s;
+  }
+  .marquee-item:hover { color: var(--gold); }
+  .marquee-item::before { content: '\25C6'; color: var(--gold); font-size: 7px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTIONS ── */
+  section { padding: 120px 56px; position: relative; z-index: 2; }
+  .section-tag {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-tag::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 68px); font-weight: 900;
+    line-height: 1.08; letter-spacing: -0.02em; padding-bottom: 4px;
+  }
+  .section-title em {
+    font-style: italic;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--off-black); border-top: 1px solid var(--border); }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
+  .services-intro { font-size: 15px; color: var(--white-dim); max-width: 340px; line-height: 1.75; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-strong); }
+
+  .service-card {
+    background: var(--card); padding: 48px 40px 56px;
+    position: relative; overflow: hidden;
+    transition: background 0.35s;
+    border: 1px solid transparent;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gradient-gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s cubic-bezier(.23,1,.32,1);
+  }
+  .service-card:hover { background: var(--card-hover); border-color: var(--border-strong); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card::after {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at top right, var(--gold-dim), transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .service-card:hover::after { opacity: 1; }
+
+  /* Floating diamond in corner of each card */
+  .service-geo {
+    position: absolute; bottom: 24px; right: 24px;
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.1);
+    transform: rotate(45deg);
+    transition: transform 0.7s cubic-bezier(.23,1,.32,1), border-color 0.4s, box-shadow 0.4s;
+  }
+  .service-card:hover .service-geo {
+    transform: rotate(90deg);
+    border-color: rgba(201,168,76,0.35);
+    box-shadow: 0 0 16px rgba(201,168,76,0.1);
+  }
+
+  .service-num { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 32px; opacity: 0.6; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; line-height: 1.15; margin-bottom: 18px; }
+  .service-card p { font-size: 14px; color: var(--white-dim); line-height: 1.8; margin-bottom: 28px; }
+  .service-price {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--gold); padding: 9px 18px;
+    border: 1px solid var(--gold-dim); display: inline-block; background: var(--gold-dim);
+  }
+  .service-features { margin-top: 28px; list-style: none; }
+  .service-features li {
+    font-size: 13px; color: var(--white-dim); padding: 9px 0;
+    border-bottom: 1px solid var(--white-faint);
+    display: flex; align-items: center; gap: 12px;
+    transition: color 0.2s, padding-left 0.3s cubic-bezier(.23,1,.32,1);
+  }
+  .service-features li::before { content: '\2192'; color: var(--gold); font-size: 11px; flex-shrink: 0; }
+  .service-card:hover .service-features li { color: var(--white); padding-left: 4px; }
+
+  /* ── HOW IT WORKS ── */
+  .how { position: relative; overflow: hidden; }
+
+  .how-svg {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    width: 100%; height: 100%; overflow: visible;
+  }
+  .how-path {
+    fill: none; stroke: rgba(201,168,76,0.12);
+    stroke-width: 1; stroke-dasharray: 800; stroke-dashoffset: 800;
+    transition: stroke-dashoffset 1.6s cubic-bezier(.23,1,.32,1);
+  }
+  .how-path.drawn { stroke-dashoffset: 0; }
+
+  .how-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 72px; position: relative; z-index: 1; }
+  .step { position: relative; padding-left: 72px; }
+  .step::before {
+    content: attr(data-num); position: absolute; left: 0; top: 0;
+    width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 16px;
+    color: var(--gold); border: 1.5px solid var(--gold-dim);
+    background: var(--card); transition: all 0.4s cubic-bezier(.23,1,.32,1);
+  }
+  .step:hover::before { border-color: var(--gold); box-shadow: 0 0 28px rgba(201,168,76,0.2), inset 0 0 16px rgba(201,168,76,0.05); }
+  .step h4 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 14px; margin-top: 4px; transition: color 0.3s; }
+  .step:hover h4 { color: var(--gold-light); }
+  .step p { font-size: 14px; color: var(--white-dim); line-height: 1.8; }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--off-black); border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  }
+  .about-left .section-title { margin-bottom: 32px; }
+  .about-body { font-size: 15px; color: var(--white-dim); line-height: 1.85; margin-bottom: 20px; }
+  .about-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+
+  .pill {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold-dim);
+    padding: 8px 16px; background: var(--gold-dim);
+    transition: color 0.3s; position: relative; overflow: hidden;
+  }
+  .pill::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s cubic-bezier(.23,1,.32,1); z-index: 0;
+  }
+  .pill span { position: relative; z-index: 1; }
+  .pill:hover { color: var(--black); border-color: var(--gold); }
+  .pill:hover::before { transform: scaleX(1); }
+
+  .about-right { display: flex; flex-direction: column; gap: 1px; background: var(--border-strong); }
+  .proof-item {
+    background: var(--card); padding: 32px 36px;
+    display: flex; align-items: flex-start; gap: 20px;
+    transition: background 0.3s, padding-left 0.35s cubic-bezier(.23,1,.32,1);
+    position: relative; overflow: hidden;
+  }
+  .proof-item::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gradient-gold);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.4s cubic-bezier(.23,1,.32,1);
+  }
+  .proof-item:hover { background: var(--card-hover); padding-left: 44px; }
+  .proof-item:hover::after { transform: scaleY(1); }
+  .proof-icon {
+    width: 44px; height: 44px; border: 1px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 18px; flex-shrink: 0;
+    background: var(--gold-dim); transition: all 0.3s;
+  }
+  .proof-item:hover .proof-icon { border-color: var(--gold); box-shadow: 0 0 20px var(--gold-dim); transform: scale(1.08); }
+  .proof-text h5 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .proof-text p { font-size: 13px; color: var(--white-dim); line-height: 1.65; }
+
+  /* ── BOOKING ── */
+  .booking { border-top: 1px solid var(--border); text-align: center; position: relative; overflow: hidden; }
+  .booking-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    animation: bookingPulse 6s ease-in-out infinite;
+  }
+  @keyframes bookingPulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%     { opacity: 0.4; transform: scale(1.12); }
+  }
+  .booking-content { position: relative; z-index: 1; }
+  .booking h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 84px); font-weight: 900;
+    line-height: 1; margin-bottom: 24px; letter-spacing: -0.02em;
+  }
+  .booking h2 em {
+    font-style: italic;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .booking-sub { font-size: 15px; color: var(--white-dim); max-width: 460px; margin: 0 auto 52px; line-height: 1.75; }
+  .booking-options { display: flex; gap: 1px; background: var(--border-strong); max-width: 760px; margin: 0 auto; }
+  .booking-card {
+    background: var(--card); padding: 44px 36px 52px;
+    flex: 1; text-align: left; position: relative;
+    overflow: hidden; transition: background 0.3s;
+  }
+  .booking-card:hover { background: var(--card-hover); }
+  .booking-card-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .booking-card h4 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+  .booking-card p { font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-bottom: 28px; }
+  .booking-btn {
+    display: inline-block; background: var(--gold); color: var(--black);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none; cursor: none;
+    transition: background 0.25s, box-shadow 0.25s; font-weight: 500;
+    position: relative; overflow: hidden;
+  }
+  .booking-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.4s ease;
+  }
+  .booking-btn:hover { background: var(--gold-light); box-shadow: 0 8px 32px rgba(201,168,76,0.25); }
+  .booking-btn:hover::before { left: 100%; }
+  .booking-btn-ghost {
+    display: inline-block; color: var(--white-dim);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none; cursor: none;
+    border: 1px solid var(--border-strong); transition: all 0.25s;
+  }
+  .booking-btn-ghost:hover { color: var(--white); border-color: var(--gold-dim); background: var(--gold-dim); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 52px 56px; border-top: 1px solid var(--border);
+    background: var(--off-black); display: flex;
+    justify-content: space-between; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 32px; list-style: none; }
+  .footer-links a { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color 0.25s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,240,232,0.2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 120px 24px 80px; }
+    .hero-stats { flex-direction: column; gap: 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .how-steps { grid-template-columns: 1fr; gap: 44px; }
+    .about { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+    .booking-options { flex-direction: column; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .geo { display: none; }
+    .how-svg { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<canvas id="particle-canvas"></canvas>
+<div class="dot-grid"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="logo">Propel<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="mailto:a.shaheen7853@gmail.com?subject=Propel%20BD%20-%20Inquiry" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-grid-line"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-glow" id="heroGlow1"></div>
+  <div class="hero-glow-2" id="heroGlow2"></div>
+
+  <div class="geo-shapes">
+    <div class="geo geo-diamond"></div>
+    <div class="geo geo-diamond-sm"></div>
+    <div class="geo geo-diamond-lg"></div>
+    <div class="geo geo-circle"></div>
+    <div class="geo geo-hex"></div>
+    <div class="geo geo-line-h"></div>
+    <div class="geo geo-line-v"></div>
+    <div class="geo geo-cross"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">AI-Powered Business Development</div>
+    <h1>Your business.<br><em>Rebuilt to scale.</em></h1>
+    <p class="hero-sub">
+      We implement AI, build sales engines, and rewire how your business operates — so every department runs faster, sharper, and more profitably.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:a.shaheen7853@gmail.com?subject=Propel%20BD%20-%20Free%20Consultation&amp;body=Hey%20Ali%2C%0A%0AI%27d%20like%20to%20book%20a%20free%20consultation.%0A%0AName%3A%20%0ACompany%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0A%0AYou%20can%20also%20reach%20me%20on%20WhatsApp%3A%20%2B201020054341" class="btn-primary mag-btn">Contact Us</a>
+      <a href="#services" class="btn-ghost">See what we do</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3x</div><div class="stat-label">Average ROI increase</div></div>
+      <div><div class="stat-num">GCC + UK</div><div class="stat-label">Markets we operate in</div></div>
+      <div><div class="stat-num">AI-First</div><div class="stat-label">Every solution we build</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">AI Automation</span>
+    <span class="marquee-item">Custom AI Apps</span>
+    <span class="marquee-item">Sales in a Box</span>
+    <span class="marquee-item">ICP Research</span>
+    <span class="marquee-item">Lead Generation</span>
+    <span class="marquee-item">Business Overhaul</span>
+    <span class="marquee-item">AI Training</span>
+    <span class="marquee-item">Operations Design</span>
+    <span class="marquee-item">Finance Automation</span>
+    <span class="marquee-item">GCC Markets</span>
+    <span class="marquee-item">UK Markets</span>
+    <span class="marquee-item">AI Automation</span>
+    <span class="marquee-item">Custom AI Apps</span>
+    <span class="marquee-item">Sales in a Box</span>
+    <span class="marquee-item">ICP Research</span>
+    <span class="marquee-item">Lead Generation</span>
+    <span class="marquee-item">Business Overhaul</span>
+    <span class="marquee-item">AI Training</span>
+    <span class="marquee-item">Operations Design</span>
+    <span class="marquee-item">Finance Automation</span>
+    <span class="marquee-item">GCC Markets</span>
+    <span class="marquee-item">UK Markets</span>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-tag">What we offer</div>
+      <h2 class="section-title">Three ways to<br><em>transform your business</em></h2>
+    </div>
+    <p class="services-intro">From AI-powered tools to full business transformation — pick the engagement that matches where you are.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-geo"></div>
+      <div class="service-num">01 — Build</div>
+      <h3>AI Build</h3>
+      <p>We audit your operations, identify the highest-ROI opportunities, and deploy tailored AI solutions — automations, custom apps, finance tools, and 24/7 AI assistants that plug into your existing systems.</p>
+      <div class="service-price">Done-For-You</div>
+      <ul class="service-features">
+        <li>Operations &amp; workflow automation</li>
+        <li>Custom AI apps built for your business</li>
+        <li>Finance &amp; reporting tools</li>
+        <li>24/7 AI assistants deployed in your stack</li>
+        <li>Team training on every tool we build</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-geo"></div>
+      <div class="service-num">02 — Pipeline</div>
+      <h3>Sales in a Box</h3>
+      <p>We deep-dive into your market, define your ICP with surgical precision, build your outreach strategy from scratch, and deliver a pipeline of researched, qualified prospects ready for you to close.</p>
+      <div class="service-price">Full Package</div>
+      <ul class="service-features">
+        <li>ICP deep analysis &amp; persona mapping</li>
+        <li>Outreach strategy &amp; sales playbook</li>
+        <li>Objection handling &amp; closing scripts</li>
+        <li>Qualified lead lists matching your ICP</li>
+        <li>Multi-channel campaign architecture</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-geo"></div>
+      <div class="service-num">03 — Transform</div>
+      <h3>The Overhaul</h3>
+      <p>We sit with every department — finance, ops, sales, leadership — map how they run, where they leak, and rebuild the playbook. Process redesign, AI training for every team, and tighter cross-functional alignment.</p>
+      <div class="service-price">Consulting Engagement</div>
+      <ul class="service-features">
+        <li>Cross-functional business audit</li>
+        <li>Process &amp; communication redesign</li>
+        <li>KPI frameworks &amp; accountability systems</li>
+        <li>AI training for every department</li>
+        <li>Ongoing advisory &amp; implementation support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how" id="how">
+  <svg class="how-svg" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
+    <path class="how-path" id="howPath1" d="M 150 100 C 350 100, 350 300, 550 300 C 750 300, 750 100, 950 100 C 1050 100, 1100 200, 1100 300" />
+  </svg>
+  <div class="section-tag reveal">The process</div>
+  <h2 class="section-title reveal">From first call to<br><em>full transformation</em></h2>
+  <div class="how-steps">
+    <div class="step reveal" data-num="1">
+      <h4>Discovery Call</h4>
+      <p>We map your business, understand your pain points, and identify where the biggest gains are hiding. 45 minutes — no fluff, no pitch.</p>
+    </div>
+    <div class="step reveal" data-num="2">
+      <h4>Solution Architecture</h4>
+      <p>We design the full plan — whether that's AI tools, a sales engine, or an operational overhaul. You approve everything before we touch a thing.</p>
+    </div>
+    <div class="step reveal" data-num="3">
+      <h4>Build &amp; Deploy</h4>
+      <p>We execute inside your systems, test everything end-to-end, and go live. You see results within the first week — not the first quarter.</p>
+    </div>
+    <div class="step reveal" data-num="4">
+      <h4>Optimise &amp; Scale</h4>
+      <p>Weekly reviews. Performance tracking. Continuous iteration. We don't disappear after delivery — we stay until every system is running at peak.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="section-tag">Who we are</div>
+    <h2 class="section-title">Operator mindset.<br><em>AI leverage.</em></h2>
+    <p class="about-body">Propel was built by someone who's been in the trenches — building pipelines, closing deals across GCC and UK markets, and deploying AI infrastructure that makes businesses move faster.</p>
+    <p class="about-body">We don't hand you a strategy deck and walk away. We build the systems, train the teams, and stay until the numbers prove it's working. Everything we create is yours to keep.</p>
+    <div class="about-pills">
+      <span class="pill"><span>GCC Markets</span></span>
+      <span class="pill"><span>UK Markets</span></span>
+      <span class="pill"><span>AI Implementation</span></span>
+      <span class="pill"><span>B2B Sales</span></span>
+      <span class="pill"><span>Operations</span></span>
+      <span class="pill"><span>Fintech</span></span>
+    </div>
+  </div>
+  <div class="about-right reveal">
+    <div class="proof-item">
+      <div class="proof-icon">&lt;/&gt;</div>
+      <div class="proof-text"><h5>AI-Native Builder</h5><p>Custom apps, automations, and AI assistants — built and deployed inside your business, not off-the-shelf.</p></div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-icon">&#9678;</div>
+      <div class="proof-text"><h5>Operator, Not Consultant</h5><p>We run the systems alongside you. Not slides. Not recommendations. Execution and results.</p></div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-icon">&#9650;</div>
+      <div class="proof-text"><h5>Market-Specific Playbooks</h5><p>GCC outreach is different from UK outreach. We know both and build accordingly.</p></div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-icon">&#9672;</div>
+      <div class="proof-text"><h5>You Own Everything</h5><p>Every system, tool, playbook, and automation we build belongs to you. No lock-in, ever.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section class="booking" id="booking">
+  <div class="booking-bg"></div>
+  <div class="booking-content">
+    <div class="section-tag reveal" style="justify-content:center;">Book a session</div>
+    <h2 class="reveal">Ready to <em>move?</em></h2>
+    <p class="booking-sub reveal">Free consultation to scope the engagement — or jump straight into a focused working session.</p>
+    <div class="booking-options reveal">
+      <div class="booking-card">
+        <div class="booking-card-tag">Free &middot; 45 minutes</div>
+        <h4>Discovery Call</h4>
+        <p>We audit where you are, identify the biggest opportunities, and map exactly what needs to happen — whether it's AI, sales, or operations. No pitch, just clarity.</p>
+        <a href="mailto:a.shaheen7853@gmail.com?subject=Propel%20BD%20-%20Discovery%20Call&amp;body=Hey%20Ali%2C%0A%0AI%27d%20like%20to%20book%20a%20discovery%20call.%0A%0AName%3A%20%0ACompany%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0A%0AYou%20can%20also%20reach%20me%20on%20WhatsApp%3A%20%2B201020054341" class="booking-btn mag-btn">Get in Touch &rarr;</a>
+      </div>
+      <div class="booking-card">
+        <div class="booking-card-tag">Paid &middot; 90 minutes</div>
+        <h4>Deep-Dive Session</h4>
+        <p>Focused working session on your specific challenge — AI implementation, sales strategy, or operational bottlenecks. Recorded, actionable, tailored to your market.</p>
+        <a href="mailto:a.shaheen7853@gmail.com?subject=Propel%20BD%20-%20Working%20Session&amp;body=Hey%20Ali%2C%0A%0AI%27d%20like%20to%20book%20a%20deep-dive%20working%20session.%0A%0AName%3A%20%0ACompany%3A%20%0AChallenge%3A%20%0A%0AYou%20can%20also%20reach%20me%20on%20WhatsApp%3A%20%2B201020054341" class="booking-btn-ghost mag-btn">Get in Touch &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Propel<span>.</span></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 Propel BD. All rights reserved.</div>
+</footer>
+
+<script>
+// ── CANVAS PARTICLES ──────────────────────────────────────────────
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+const COUNT = Math.min(55, Math.floor(window.innerWidth / 25));
+
+function resizeCanvas() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Dot {
+  constructor() { this.reset(); }
+  reset() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.r  = Math.random() * 1.4 + 0.4;
+    this.a  = Math.random() * 0.45 + 0.1;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < -10) this.x = W + 10;
+    if (this.x > W + 10) this.x = -10;
+    if (this.y < -10) this.y = H + 10;
+    if (this.y > H + 10) this.y = -10;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(201,168,76,${this.a})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < COUNT; i++) particles.push(new Dot());
+
+function tick() {
+  ctx.clearRect(0, 0, W, H);
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const d  = Math.sqrt(dx * dx + dy * dy);
+      if (d < 130) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(201,168,76,${(1 - d / 130) * 0.1})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+
+// ── CURSOR ────────────────────────────────────────────────────────
+const cursorEl = document.getElementById('cursor');
+const ringEl   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursorEl.style.left = mx + 'px';
+  cursorEl.style.top  = my + 'px';
+});
+
+(function animRing() {
+  rx += (mx - rx) * 0.1;
+  ry += (my - ry) * 0.1;
+  ringEl.style.left = rx + 'px';
+  ringEl.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+document.querySelectorAll('a,button,.service-card,.booking-card,.proof-item,.pill,.step').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursorEl.style.transform = 'translate(-50%,-50%) scale(2.5)';
+    ringEl.style.transform   = 'translate(-50%,-50%) scale(1.6)';
+    ringEl.style.opacity     = '1';
+    ringEl.style.borderColor = 'rgba(201,168,76,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursorEl.style.transform = 'translate(-50%,-50%) scale(1)';
+    ringEl.style.transform   = 'translate(-50%,-50%) scale(1)';
+    ringEl.style.opacity     = '0.5';
+    ringEl.style.borderColor = 'rgba(201,168,76,0.5)';
+  });
+});
+
+// ── MAGNETIC BUTTONS ──────────────────────────────────────────────
+document.querySelectorAll('.mag-btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r  = btn.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width  / 2) * 0.25;
+    const dy = (e.clientY - r.top  - r.height / 2) * 0.25;
+    btn.style.transform  = `translate(${dx}px,${dy}px)`;
+    btn.style.transition = 'transform 0.1s cubic-bezier(.23,1,.32,1)';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform  = 'translate(0,0)';
+    btn.style.transition = 'transform 0.5s cubic-bezier(.23,1,.32,1), background 0.25s, box-shadow 0.25s';
+  });
+});
+
+// ── PARALLAX MOUSE ────────────────────────────────────────────────
+const g1 = document.getElementById('heroGlow1');
+const g2 = document.getElementById('heroGlow2');
+document.addEventListener('mousemove', e => {
+  const xf = (e.clientX / window.innerWidth  - 0.5);
+  const yf = (e.clientY / window.innerHeight - 0.5);
+  if (g1) g1.style.transform = `translate(${xf * -35}px,${yf * -22}px)`;
+  if (g2) g2.style.transform = `translate(${xf *  22}px,${yf *  15}px)`;
+});
+
+// ── SCROLL PROGRESS ───────────────────────────────────────────────
+const pbar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  pbar.style.width = (window.scrollY / total * 100) + '%';
+});
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ── SVG PATH DRAW ─────────────────────────────────────────────────
+const howSection = document.querySelector('.how');
+if (howSection) {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.how-path').forEach((p, i) => {
+        setTimeout(() => p.classList.add('drawn'), i * 400);
+      });
+    }
+  }, { threshold: 0.25 }).observe(howSection);
+}
+
+// ── NAV ───────────────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// ── SMOOTH SCROLL ─────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
